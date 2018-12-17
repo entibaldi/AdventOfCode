@@ -15,7 +15,11 @@ fun main(args: Array<String>) {
     part2()
 }
 
-fun part2() {
+private fun part1() {
+    println(reducePolymer(polymer).size)
+}
+
+private fun part2() {
     val minReducedSize = alphabet
         .map {
             val str = String(polymer.toCharArray())
@@ -30,10 +34,6 @@ fun part2() {
             it.size
         }.min()
     println(minReducedSize)
-}
-
-fun part1() {
-    println(reducePolymer(polymer).size)
 }
 
 fun reducePolymer(polymer: List<Char>) : List<Char> {

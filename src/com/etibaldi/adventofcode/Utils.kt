@@ -52,3 +52,22 @@ inline fun <T> List<T>.dropTwoWhile(predicate: (T, T) -> Boolean): List<T> {
     if (!skipNext) result.add(last())
     return result
 }
+
+inline fun <T, R : Comparable<R>> Iterable<T>.allMinBy(selector: (T) -> R): List<T> {
+    val result = mutableListOf<T>()
+    val iterator = iterator()
+    if (!iterator.hasNext()) return result
+    val firstElem = iterator.next()
+    result.add(firstElem)
+    var minValue = selector(firstElem)
+    while (iterator.hasNext()) {
+        val e = iterator.next()
+        val v = selector(e)
+        if (minValue >= v) {
+            if (minValue > v) result.clear()
+            result.add(e)
+            minValue = v
+        }
+    }
+    return result
+}
