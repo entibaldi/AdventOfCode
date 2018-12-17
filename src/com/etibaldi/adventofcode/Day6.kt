@@ -45,18 +45,24 @@ fun main(args: Array<String>) {
         }
 
     part1()
+    part2()
 }
 
 private fun part1() {
-
-    lattice.forEach { println(it.asList()) }
-
     val maxCoord = coordinates.withIndex()
         .filterNot { setToExclude.contains(it.index) }
         .map { coord ->
             coord to lattice.sumBy { v -> v.count { it == coord.index.toString() } }
         }.maxBy { it.second }
     println(maxCoord)
+}
 
+private fun part2() {
+    val safeAreaLattice = lattice.mapIndexed { i, v -> v.mapIndexed { j, _ ->
+        val p = IPoint(i, j)
+        val totDistance = coordinates.sumBy { it.l1DistanceTo(p) }
+        if (totDistance < 10000) "*" else ""
+    }}
+    println(safeAreaLattice.sumBy { it.count { s -> s == "*" } })
 }
 
