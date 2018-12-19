@@ -4,21 +4,21 @@ import io.data2viz.geom.Point
 import java.io.File
 import kotlin.math.abs
 
-data class IPoint(val x: Int, val y: Int) {
+private data class IPoint(val x: Int, val y: Int) {
 
     fun l1DistanceTo(other: IPoint) = abs(this.x - other.x) + abs(this.y - other.y)
 }
 
-val coordinates = File("6-input.txt").readLines()
+private val coordinates = File("6-input.txt").readLines()
     .map { it.split(", ") }
     .map { IPoint(it[0].toInt(), it[1].toInt()) }
 
-val maxX = coordinates.map { it.x }.max()!!
-val maxY = coordinates.map { it.y }.max()!!
+private val maxX = coordinates.map { it.x }.max()!!
+private val maxY = coordinates.map { it.y }.max()!!
 
-val lattice : Array<Array<String>> = Array(maxX + 1) { Array(maxY + 1) { "" } }
+private val lattice : Array<Array<String>> = Array(maxX + 1) { Array(maxY + 1) { "" } }
 
-val setToExclude = mutableSetOf<Int>()
+private val setToExclude = mutableSetOf<Int>()
 
 /**
  * Created by krakk on 16/12/2018.
