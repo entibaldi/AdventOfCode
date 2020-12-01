@@ -1,11 +1,20 @@
 package com.entibaldi.adventofcode2020
 
 import java.io.File
+import kotlin.system.measureTimeMillis
 
 fun main() {
     val input = File("res/1/input.txt").readLines().map { it.toInt() }
-    println(Puzzle1().computePart1(input, 2020))
-    println(Puzzle1().computePart2(input))
+    val puzzle1Time = measureTimeMillis {
+        val result1 = Puzzle1().computePart1(input, 2020)
+        println("part1 result: $result1")
+    }
+    println("part1 time: $puzzle1Time")
+    val puzzle2Time = measureTimeMillis {
+        val result2 = Puzzle1().computePart2(input)
+        println("part2 result: $result2")
+    }
+    println("part2 time: $puzzle2Time")
 }
 
 class Puzzle1 {
