@@ -21,7 +21,7 @@ class Puzzle1 {
     fun computePart1(input: List<Int>, target: Int): Int? {
         val expenses = input.toHashSet()
         for (n in expenses) {
-            if (expenses.contains(target - n)) {
+            if (n == target - n || expenses.contains(target - n)) {
                 return n * (target - n)
             }
         }
