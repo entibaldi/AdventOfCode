@@ -26,7 +26,7 @@ fun main() {
     println("Valid passwords part1: $countValidPart1")
     val countValidPart2 = input.count {
         val chars = it.password.toCharArray()
-        sequenceOf(chars[it.minCount - 1], chars[it.maxCount - 1]).count { c -> c == it.c } == 1
+        (chars[it.minCount - 1] == it.c) != (chars[it.maxCount - 1] == it.c)
     }
     println("Valid passwords part2: $countValidPart2")
 }
