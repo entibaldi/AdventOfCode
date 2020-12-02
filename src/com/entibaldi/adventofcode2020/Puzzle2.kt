@@ -14,7 +14,7 @@ private data class PwdRecord(
 fun main() {
     val input = File("res/2/input.txt").readLines().map {
         val result: List<String> = lineRegex.matchEntire(it.trim())!!.groupValues
-        PwdRecord(result[1].toInt(), result[2].toInt(), result[3].toCharArray()[0], result[4])
+        PwdRecord(result[1].toInt(), result[2].toInt(), result[3].single(), result[4])
     }
     val countValidPart1 = input.count {
         val c = it.c
