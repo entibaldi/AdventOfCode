@@ -28,8 +28,7 @@ fun main() {
             calculator.hitTrees(5, 1),
             calculator.hitTrees(7, 1),
             calculator.hitTrees(1, 2)
-    ).map { it.toLong() }
-            .reduce { acc, i -> acc * i }
+    ).fold(1L) { acc, i -> acc * i }
 
     println("part2: $part2")
 }
