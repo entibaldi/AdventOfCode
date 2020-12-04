@@ -5,7 +5,7 @@ import java.util.HashSet
 
 fun main() {
     var patternLength = 0
-    val fileLines = File("res/3/input.txt")
+    val fileLines = File("res/4/input.txt")
             .readLines()
     val maxY = fileLines.count()
     val inputMap: HashSet<Pair<Int, Int>> = fileLines
