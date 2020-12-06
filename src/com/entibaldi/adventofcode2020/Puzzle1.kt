@@ -19,10 +19,13 @@ fun main() {
 
 class Puzzle1 {
     fun computePart1(input: List<Int>, target: Int): Int? {
-        val expenses = input.toHashSet()
-        for (n in expenses) {
-            if (n == target - n || expenses.contains(target - n)) {
-                return n * (target - n)
+        val expenses = input.fold(mutableMapOf<Int, Int>()) { map, i ->
+            map[i] = map.getOrDefault(i, 0) + 1
+            map
+        }
+        for ((cost, amount) in expenses) {
+            if ((cost == target - cost && amount >= 2) || (expenses.contains(target - cost))) {
+                return cost * (target - cost)
             }
         }
         return null
