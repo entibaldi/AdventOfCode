@@ -7,9 +7,9 @@ fun main() {
     val resultPart1 = input.map { it.replace("\n", "").chars().distinct().count() }.sum()
     val resultPart2 = input.map { answers ->
         answers.split("\n")
-                .map { it.trim().toCharArray().toSet() }
-                .reduce { acc, hashSet -> acc.intersect(hashSet) }
-                .size
+            .map { it.trim().toCharArray().toSet() }
+            .reduce { acc, hashSet -> acc.intersect(hashSet) }
+            .size
     }.sum()
     println("Part1: $resultPart1")
     println("Part2: $resultPart2")

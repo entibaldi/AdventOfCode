@@ -5,10 +5,10 @@ import java.io.File
 private val lineRegex = Regex("^(\\d+)-(\\d+) (.): (.+)\$")
 
 private data class PwdRecord(
-        val minCount: Int,
-        val maxCount: Int,
-        val c: Char,
-        val password: String
+    val minCount: Int,
+    val maxCount: Int,
+    val c: Char,
+    val password: String
 )
 
 fun main() {

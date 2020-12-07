@@ -14,15 +14,15 @@ fun main() {
 }
 
 fun getSeatId(seat: String): Int =
-        getRow(seat.substring(0, 7)) * 8 + getColumn(seat.substring(7, seat.length))
+    getRow(seat.substring(0, 7)) * 8 + getColumn(seat.substring(7, seat.length))
 
 fun getRow(seat: String): Int = seat
-        .replace("F", "0")
-        .replace("B", "1")
-        .toInt(2)
+    .replace("F", "0")
+    .replace("B", "1")
+    .toInt(2)
 
 fun getColumn(seat: String): Int = seat
-        .replace("L", "0")
-        .replace("R", "1")
-        .toInt(2)
+    .replace("L", "0")
+    .replace("R", "1")
+    .toInt(2)
 
