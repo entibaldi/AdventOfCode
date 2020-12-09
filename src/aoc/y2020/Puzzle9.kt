@@ -11,8 +11,8 @@ class Puzzle9 : Puzzle(2020, 9) {
         val numbers = inputLines.map { it.toLong() }
         val invalid = numbers.windowed(26, 1)
             .first { window ->
-                tuplePairs(window.dropLast(1))
-                    .none { (a, b) -> a != b && a + b == window.last() }
+                val testList = window.dropLast(1)
+                testList.none { it * 2 != window.last() && testList.contains(window.last() - it) }
             }.last()
         println(invalid)
         var foundList: List<Long> = listOf()
@@ -30,13 +30,5 @@ class Puzzle9 : Puzzle(2020, 9) {
             }
         }
         println(foundList.min()!! + foundList.max()!!)
-    }
-
-    private fun tuplePairs(inputList: List<Long>): Sequence<Pair<Long, Long>> = sequence {
-        for (i in inputList.indices) {
-            for (j in (i + 1)..inputList.lastIndex) {
-                yield(inputList[i] to inputList[j])
-            }
-        }
     }
 }
