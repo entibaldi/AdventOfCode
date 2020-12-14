@@ -7,7 +7,7 @@ abstract class Puzzle(
     val year: Int,
     val day: Int
 ) {
-    val file: File = File("res/$year/$day/input.txt")
+    val file: File by lazy { File("res/$year/$day/input.txt") }
 
     val inputText: String by lazy { file.readText() }
 
