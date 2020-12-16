@@ -13,7 +13,7 @@ abstract class Puzzle(
 
     val inputLines: List<String> by lazy { file.readLines() }
 
-    val inputGroups: List<String> by lazy { inputText.split("\n\n") }
+    val inputGroups: List<String> by lazy { inputText.split("\n\n", "\r\n\r\n", "\r\r") }
 
     fun runAndProfile() {
         val time = measureTimeMillis(this::run)
