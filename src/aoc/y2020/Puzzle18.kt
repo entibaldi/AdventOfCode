@@ -20,17 +20,11 @@ class Puzzle18 : Puzzle(2020, 18) {
         var expression = this
         while (true) {
             val replace = parenthesisEval.replace(expression) { matchResult ->
-                matchResult.groupValues[0]
-                        .replace("(","")
-                        .replace(")","")
+                matchResult.groupValues[0].replace("[()]".toRegex(),"")
                         .evaluateWithoutParenthesis(additionFirst)
                         .toString()
             }
-            if (replace == expression) {
-                break
-            } else {
-                expression = replace
-            }
+            if (replace == expression) break else expression = replace
         }
         return expression.evaluateWithoutParenthesis(additionFirst)
     }
@@ -42,11 +36,7 @@ class Puzzle18 : Puzzle(2020, 18) {
                 val replace = additionEval.replace(expression) { matchResult ->
                     matchResult.groupValues[0].evaluateEager().toString()
                 }
-                if (replace == expression) {
-                    break
-                } else {
-                    expression = replace
-                }
+                if (replace == expression) break else expression = replace
             }
         }
         return expression.evaluateEager()
