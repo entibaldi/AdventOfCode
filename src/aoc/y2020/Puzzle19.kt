@@ -10,29 +10,25 @@ data class Rule19(
     val id: Int,
     val regexString: String
 ) {
-    fun buildRegexString(rules: Map<Int, Rule19>, isPart2: Boolean): String = when (regexString) {
-        "\"a\"" -> "a"
-        "\"b\"" -> "b"
-        else -> {
-            val ors = regexString.split(" | ")
-            when {
-                isPart2 && id == 8 -> {
-                    "(${rules[42]!!.buildRegexString(rules, isPart2)})+"
-                }
-                isPart2 && id == 11 -> {
-                    val left = rules[42]!!.buildRegexString(rules, isPart2)
-                    val right = rules[31]!!.buildRegexString(rules, isPart2)
-                    "(${(1..4).joinToString("|") { i -> "($left{$i}$right{$i})" }})"
-                }
-                ors.size == 2 -> {
-                    val left = ors[0].regexFromIds(rules, isPart2)
-                    val right = ors[1].regexFromIds(rules, isPart2)
-                    "($left|$right)"
-                }
-                else -> {
-                    "(${ors[0].regexFromIds(rules, isPart2)})"
-                }
+    fun buildRegexString(rules: Map<Int, Rule19>, isPart2: Boolean): String {
+        val ors = regexString.split(" | ")
+        return when {
+            regexString == "\"a\"" -> "a"
+            regexString == "\"b\"" -> "b"
+            isPart2 && id == 8 -> {
+                "(${rules[42]!!.buildRegexString(rules, isPart2)})+"
             }
+            isPart2 && id == 11 -> {
+                val left = rules[42]!!.buildRegexString(rules, isPart2)
+                val right = rules[31]!!.buildRegexString(rules, isPart2)
+                "(${(1..4).joinToString("|") { i -> "($left{$i}$right{$i})" }})"
+            }
+            ors.size == 2 -> {
+                val left = ors[0].regexFromIds(rules, isPart2)
+                val right = ors[1].regexFromIds(rules, isPart2)
+                "($left|$right)"
+            }
+            else -> "(${ors[0].regexFromIds(rules, isPart2)})"
         }
     }
 
