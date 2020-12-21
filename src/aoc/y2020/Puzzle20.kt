@@ -149,9 +149,4 @@ class Puzzle20 : Puzzle(2020, 20) {
         none { otherTile ->
             otherTile.id != id && otherTile.transformations().any { otTransf -> otTransf.borders.any { it == border } }
         }
-
-    private fun Sequence<Tile>.matches(id: Int, border: List<Boolean>): Boolean =
-        any { otherTile ->
-            otherTile.id != id && otherTile.transformations().any { otTransf -> otTransf.borders.any { it == border } }
-        }
 }
