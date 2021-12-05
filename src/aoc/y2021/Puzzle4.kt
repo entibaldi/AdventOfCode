@@ -51,18 +51,20 @@ class Puzzle4 : Puzzle(2021, 4) {
             }.flatten()
         }.map { board ->
             Board(mk.ndarray(board, intArrayOf(5, 5)))
-        }
-        val nonWinnerBoards = boards.toMutableList()
+        }.toMutableList()
+        val winScores = mutableListOf<Int>()
         for (n in numbers) {
-            val iterator = nonWinnerBoards.listIterator()
+            val iterator = boards.listIterator()
             while (iterator.hasNext()) {
                 val board = iterator.next()
                 board.mark(n)
                 if (board.isWinner()) {
-                    println(board.calculateScore(n))
+                    winScores += board.calculateScore(n)
                     iterator.remove()
                 }
             }
         }
+        println(winScores.first())
+        println(winScores.last())
     }
 }
