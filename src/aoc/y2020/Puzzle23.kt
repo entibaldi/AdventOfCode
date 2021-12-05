@@ -45,7 +45,7 @@ class Puzzle23 : Puzzle(2020, 23) {
     }
 
     private fun initialise(input: List<Int>, size: Int): Array<Cup> {
-        val inputRange = input.min()!!..input.max()!!
+        val inputRange = input.minOrNull()!!..input.maxOrNull()!!
         val inputCups = input.map { Cup(it) }.associateBy { it.value }
         input.windowed(2, 1).forEach {
             inputCups[it[0]]!!.next = inputCups[it[1]]!!

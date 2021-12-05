@@ -17,7 +17,7 @@ class Puzzle13 : Puzzle(2020, 13) {
     }
 
     private fun part1(startTime: Int, buses: List<Int?>) {
-        val bestBus = buses.filterNotNull().minBy { it - startTime % it }!!
+        val bestBus = buses.filterNotNull().minByOrNull { it - startTime % it }!!
         val timeToWait = bestBus - startTime % bestBus
         println(bestBus * timeToWait)
     }
@@ -26,7 +26,7 @@ class Puzzle13 : Puzzle(2020, 13) {
         val busesStartTimes = buses.withIndex().filter { it.value != null }.sortedByDescending { it.value }
         var deltaSearch = busesStartTimes.first().value!!.toLong()
         for (i in 1..busesStartTimes.lastIndex) {
-            deltaSearch /= gcd(deltaSearch, busesStartTimes[i].value!!)
+            deltaSearch /= gcd(deltaSearch, busesStartTimes[i].value!!.toLong())
         }
         var timestamp = -busesStartTimes.first().index.toLong()
         var indexFound = 0
@@ -37,8 +37,8 @@ class Puzzle13 : Puzzle(2020, 13) {
                 if ((timestamp + busIndex) % bus!! == 0L) {
                     indexFound = i
                     deltaSearch *= bus
-                    for (j in (i+1)..busesStartTimes.lastIndex) {
-                        deltaSearch /= gcd(deltaSearch, busesStartTimes[j].value!!)
+                    for (j in (i + 1)..busesStartTimes.lastIndex) {
+                        deltaSearch /= gcd(deltaSearch, busesStartTimes[j].value!!.toLong())
                     }
                 } else {
                     break@timestampLoop

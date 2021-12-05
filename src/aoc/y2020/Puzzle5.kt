@@ -9,9 +9,9 @@ fun main() {
 class Puzzle5 : Puzzle(2020, 5) {
     override fun run() {
         val ids = inputLines.map { getSeatId(it) }
-        println("Part1 result: ${ids.max()}")
+        println("Part1 result: ${ids.maxOrNull()}")
         for (it in ids) {
-            if (it + 1 !in ids && it != ids.max()) {
+            if (it + 1 !in ids && it != ids.maxOrNull()) {
                 println("part2 result: ${it + 1}")
             }
         }

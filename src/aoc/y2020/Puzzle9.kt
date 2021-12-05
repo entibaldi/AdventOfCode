@@ -29,6 +29,6 @@ class Puzzle9 : Puzzle(2020, 9) {
                 }
             }
         }
-        println(foundList.min()!! + foundList.max()!!)
+        println(foundList.minOrNull()!! + foundList.maxOrNull()!!)
     }
 }
