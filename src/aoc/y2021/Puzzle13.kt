@@ -23,8 +23,8 @@ class Puzzle13 : Puzzle(2021, 13) {
         folds.subList(1, folds.size).forEach {
             folded = foldPaper(folded, it)
         }
-        for (j in 0 .. folded.maxOf { it.second }) {
-            for (i in 0 .. folded.maxOf { it.first }) {
+        for (j in 0..folded.maxOf { it.second }) {
+            for (i in 0..folded.maxOf { it.first }) {
                 print(if (folded.contains(i to j)) "#" else ".")
             }
             println()
