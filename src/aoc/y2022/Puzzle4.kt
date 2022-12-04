@@ -31,5 +31,3 @@ class Puzzle4 : Puzzle(2022, 4) {
     private fun IntRange.isOverlappingWith(other: IntRange): Boolean =
         other.isContainedIn(this) || other.contains(start) || other.contains(endInclusive)
 }
-
-
