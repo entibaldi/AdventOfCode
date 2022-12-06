@@ -19,6 +19,6 @@ class Puzzle6 : Puzzle(2022, 6) {
     private fun computePart2(input: List<Char>): Int = findPacket(input, 14)
 
     private fun findPacket(input: List<Char>, windowSize: Int): Int =
-        input.toList().windowed(size = windowSize, step = 1)
+        input.windowed(size = windowSize, step = 1)
             .indexOfFirst { chars -> chars.distinct().size == windowSize } + windowSize
 }
