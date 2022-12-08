@@ -3,7 +3,10 @@ package aoc.y2022
 import aoc.Puzzle
 import org.jetbrains.kotlinx.multik.api.mk
 import org.jetbrains.kotlinx.multik.api.ndarray
-import org.jetbrains.kotlinx.multik.ndarray.data.*
+import org.jetbrains.kotlinx.multik.ndarray.data.D1
+import org.jetbrains.kotlinx.multik.ndarray.data.D2Array
+import org.jetbrains.kotlinx.multik.ndarray.data.MultiArray
+import org.jetbrains.kotlinx.multik.ndarray.data.get
 import org.jetbrains.kotlinx.multik.ndarray.operations.indexOfFirst
 import org.jetbrains.kotlinx.multik.ndarray.operations.reversed
 
@@ -70,6 +73,3 @@ class Puzzle8 : Puzzle(2022, 8) {
     private fun calculateVisible(trees: MultiArray<Int, D1>, value: Int): Int =
         trees.indexOfFirst { it >= value }.takeIf { it >= 0 }?.plus(1) ?: trees.size
 }
-
-
-
