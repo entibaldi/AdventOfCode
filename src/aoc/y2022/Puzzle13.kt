@@ -1,9 +1,6 @@
 package aoc.y2022
 
 import aoc.Puzzle
-import kotlin.collections.component1
-import kotlin.collections.component2
-import kotlin.collections.filter
 
 fun main() {
     Puzzle13().runAndProfile()
