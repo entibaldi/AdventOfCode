@@ -61,9 +61,7 @@ class Puzzle13 : Puzzle(2022, 13) {
         data class Value(val value: Int) : PacketData {
             override fun compareTo(other: PacketData): Int = when (other) {
                 is List -> List(listOf(this)).compareTo(other)
-                is Value -> {
-                    value.compareTo(other.value)
-                }
+                is Value -> value.compareTo(other.value)
             }
         }
     }
